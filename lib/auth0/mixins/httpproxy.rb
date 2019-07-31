@@ -8,26 +8,30 @@ module Auth0
       # proxying requests from instance methods to HTTP class methods
       %i(get post post_file put patch delete delete_with_body).each do |method|
         define_method(method) do |path, body = {}, extra_headers = {}|
+          # previous_headers is used b/c the @headers var is modified within
+          # the `add_headers` method, but those changes should not persist across requests.
+          previous_headers = defined?(:@headers) ? @headers.dup : nil
           safe_path = URI.escape(path)
           body = body.delete_if { |_, v| v.nil? }
-          result = if method == :get
-                     # Mutate the headers property to add parameters.
-                     add_headers({params: body})
-                     # Merge custom headers into existing ones for this req.
-                     # This prevents future calls from using them.
-                     get_headers = headers.merge extra_headers
-                     # Make the call with extra_headers, if provided.
-                     call(:get, url(safe_path), timeout, get_headers)
-                   elsif method == :delete
-                     call(:delete, url(safe_path), timeout, add_headers({params: body}))
-                   elsif method == :delete_with_body
-                     call(:delete, url(safe_path), timeout, headers, body)
-                   elsif method == :post_file
-                     body.merge!(multipart: true)
-                     call(:post, url(safe_path), timeout, headers, body)
-                   else
-                     call(method, url(safe_path), timeout, headers, body.to_json)
-                   end
+          result = \
+            if method == :get
+              # Mutate the headers property to add parameters.
+              add_headers({params: body})
+              # Merge custom headers into existing ones for this req.
+              # This prevents future calls from using them.
+              get_headers = headers.merge extra_headers
+              # Make the call with extra_headers, if provided.
+              call(:get, url(safe_path), timeout, get_headers)
+            elsif method == :delete
+              call(:delete, url(safe_path), timeout, add_headers({params: body}))
+            elsif method == :delete_with_body
+              call(:delete, url(safe_path), timeout, headers, body)
+            elsif method == :post_file
+              body.merge!(multipart: true)
+              call(:post, url(safe_path), timeout, headers, body)
+            else
+              call(method, url(safe_path), timeout, headers, body.to_json)
+            end
           case result.code
           when 200...226 then safe_parse_json(result.body)
           when 400       then raise Auth0::BadRequest, result.to_s
@@ -37,6 +41,8 @@ module Auth0
           when 500       then raise Auth0::ServerError, result.body
           else                raise Auth0::Unsupported, result.body
           end
+        ensure
+          @headers = previous_headers
         end
       end
 

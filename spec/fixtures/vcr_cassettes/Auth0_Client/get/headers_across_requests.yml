@@ -1,0 +1,135 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://auth0-sdk-tests.auth0.com/non-route?email=test@example.test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.5.1p57
+      Content-Type:
+      - application/json
+      Auth0-Client:
+      - eyJuYW1lIjoicnVieS1hdXRoMCIsInZlcnNpb24iOiI0LjcuMCIsImVudiI6eyJydWJ5IjoiMi41LjEifX0=
+      Authorization:
+      - Bearer abc123
+      Host:
+      - auth0-sdk-tests.auth0.com
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Wed, 31 Jul 2019 21:49:30 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Ot-Tracer-Spanid:
+      - 2f9d70e03f2b167d
+      Ot-Tracer-Traceid:
+      - 6e24b8722ff1e422
+      Ot-Tracer-Sampled:
+      - 'true'
+      X-Auth0-Requestid:
+      - a38f6f349007a8384613
+      Set-Cookie:
+      - did=s%3Av0%3A13603fd0-b3dd-11e9-89bc-9153a19994be.gQEu3705UicngsEcm42oWJbiPXVBw%2B0qR43JPvBkrw4;
+        Max-Age=157788000; Path=/; Expires=Wed, 31 Jul 2024 03:49:30 GMT; HttpOnly;
+        Secure
+      Content-Security-Policy:
+      - default-src 'self'
+      X-Content-Type-Options:
+      - nosniff
+      Cache-Control:
+      - private, no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAy2Ouw7CMAxF936FyV55ZUizlIgRhi4dDTUUKXWQcQf+vona6ei+pOtPl1s/jPcIsy0pNL4CEsm7cyyuGkxTwcJG8JxJf2ydW+3VnmtqH0scompWj7toPB6bR57+BV/l0JNINrjGAVCytJpXY481Kv2jiPuHDYflAUKUAAAA
+    http_version:
+  recorded_at: Wed, 31 Jul 2019 21:49:30 GMT
+- request:
+    method: post
+    uri: https://auth0-sdk-tests.auth0.com/dbconnections/change_password
+    body:
+      encoding: UTF-8
+      string: '{"connection":"Username-Password-Authentication","email":"test2@example.test"}'
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.5.1p57
+      Content-Type:
+      - application/json
+      Auth0-Client:
+      - eyJuYW1lIjoicnVieS1hdXRoMCIsInZlcnNpb24iOiI0LjcuMCIsImVudiI6eyJydWJ5IjoiMi41LjEifX0=
+      Authorization:
+      - Bearer abc123
+      Content-Length:
+      - '78'
+      Host:
+      - auth0-sdk-tests.auth0.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 31 Jul 2019 21:49:30 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Ot-Tracer-Spanid:
+      - 224edcc80463e5b1
+      Ot-Tracer-Traceid:
+      - 76d85e2b08499e31
+      Ot-Tracer-Sampled:
+      - 'true'
+      X-Auth0-Requestid:
+      - 145d4ef0196761108e74
+      Set-Cookie:
+      - did=s%3Av0%3A13886140-b3dd-11e9-abd9-bfa8755253d3.ejGTSwE9oDhpwz4lifupDybPEwFlzrzy1Xys2xJONE8;
+        Max-Age=157788000; Path=/; Expires=Wed, 31 Jul 2024 03:49:30 GMT; HttpOnly;
+        Secure
+      X-Ratelimit-Limit:
+      - '10'
+      X-Ratelimit-Remaining:
+      - '9'
+      X-Ratelimit-Reset:
+      - '1564609831'
+      Cache-Control:
+      - private, no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Strict-Transport-Security:
+      - max-age=15724800
+      X-Robots-Tag:
+      - noindex, nofollow, nosnippet, noarchive
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAwtPVS9LVcgqLS5RKE7NK1GozC9VSMxTSM1NzMxRKMlXKEotTgWLFikUJBYXl+cXpegBAKHKLwA0AAAA
+    http_version:
+  recorded_at: Wed, 31 Jul 2019 21:49:30 GMT
+recorded_with: VCR 4.0.0

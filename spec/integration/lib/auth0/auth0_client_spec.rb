@@ -87,4 +87,26 @@ describe Auth0::Client do
       expect(telemetry['env']['ruby']).to eq(RUBY_VERSION)
     end
   end
+
+  context '#get' do
+    let(:client) {
+      Auth0::Client.new(
+        v2_credentials.merge(access_token: 'abc123', domain: 'auth0-sdk-tests.auth0.com'))
+      }
+
+    it "should not persist headers across requests" do
+      # N.B. This test will fail if the headers to the first request are passed along to the
+      # second request, due to the VCR request not matching the URI.
+      VCR.use_cassette('Auth0_Client/get/headers_across_requests') do
+        begin
+          client.get('/non-route', email: "test@example.test")
+        rescue Auth0::NotFound
+        end
+        client.post('/dbconnections/change_password', {
+          connection: "Username-Password-Authentication",
+          email: "test2@example.test"
+        })
+      end
+    end
+  end
 end
