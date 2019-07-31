@@ -8,6 +8,8 @@ module Auth0
       # proxying requests from instance methods to HTTP class methods
       %i(get post post_file put patch delete delete_with_body).each do |method|
         define_method(method) do |path, body = {}, extra_headers = {}|
+          # previous_headers is used b/c the @headers var is modified within
+          # the `add_headers` method, but those changes should not persist across requests.
           previous_headers = defined?(:@headers) ? @headers.dup : nil
           safe_path = URI.escape(path)
           body = body.delete_if { |_, v| v.nil? }

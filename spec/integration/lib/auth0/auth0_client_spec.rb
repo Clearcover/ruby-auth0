@@ -95,6 +95,8 @@ describe Auth0::Client do
       }
 
     it "should not persist headers across requests" do
+      # N.B. This test will fail if the headers to the first request are passed along to the
+      # second request, due to the VCR request not matching the URI.
       VCR.use_cassette('Auth0_Client/get/headers_across_requests') do
         begin
           client.get('/non-route', email: "test@example.test")
