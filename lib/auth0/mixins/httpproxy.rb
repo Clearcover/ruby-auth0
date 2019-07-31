@@ -37,6 +37,8 @@ module Auth0
           when 500       then raise Auth0::ServerError, result.body
           else                raise Auth0::Unsupported, result.body
           end
+        ensure
+          @headers = {}
         end
       end
 
