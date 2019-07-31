@@ -60,11 +60,11 @@ http_interactions:
       encoding: ASCII-8BIT
       string: !binary |-
         H4sIAAAAAAAAAy2Ouw7CMAxF936FyV55ZUizlIgRhi4dDTUUKXWQcQf+vona6ei+pOtPl1s/jPcIsy0pNL4CEsm7cyyuGkxTwcJG8JxJf2ydW+3VnmtqH0scompWj7toPB6bR57+BV/l0JNINrjGAVCytJpXY481Kv2jiPuHDYflAUKUAAAA
-    http_version: 
+    http_version:
   recorded_at: Wed, 31 Jul 2019 21:49:30 GMT
 - request:
     method: post
-    uri: https://auth0-sdk-tests.auth0.com/dbconnections/change_password?email=test@example.test
+    uri: https://auth0-sdk-tests.auth0.com/dbconnections/change_password
     body:
       encoding: UTF-8
       string: '{"connection":"Username-Password-Authentication","email":"test2@example.test"}'
@@ -130,6 +130,6 @@ http_interactions:
       encoding: ASCII-8BIT
       string: !binary |-
         H4sIAAAAAAAAAwtPVS9LVcgqLS5RKE7NK1GozC9VSMxTSM1NzMxRKMlXKEotTgWLFikUJBYXl+cXpegBAKHKLwA0AAAA
-    http_version: 
+    http_version:
   recorded_at: Wed, 31 Jul 2019 21:49:30 GMT
 recorded_with: VCR 4.0.0
