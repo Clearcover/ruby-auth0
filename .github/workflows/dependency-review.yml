@@ -1,0 +1,14 @@
+name: 'Dependency Review'
+
+permissions:
+  contents: read      
+
+on:
+  pull_request:
+
+
+jobs:
+
+  dependency_review:
+    name: Dependency Review Build Blocker 
+    uses: gwehrs/demo-repo-test/.github/workflows/dependency-review.yml@main
