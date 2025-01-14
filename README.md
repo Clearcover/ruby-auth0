@@ -1,3 +1,9 @@
+# archive note
+
+@Clearcover went back to standard Gem 2023 so archiving this fork 2025-01-23
+
+<https://github.com/Clearcover/reznor/commit/e558a9e83a877d1eee697f078d20062309d49ad1#diff-d09ea66f8227784ff4393d88a19836f321c915ae10031d16c93d67e6283ab55fR107>
+
 # Auth0 - Ruby
 
 [![CircleCI](https://img.shields.io/circleci/project/github/auth0/ruby-auth0/master.svg)](https://circleci.com/gh/auth0/ruby-auth0)
